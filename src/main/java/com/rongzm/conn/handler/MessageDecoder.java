@@ -9,6 +9,7 @@ import java.util.List;
 import com.rongzm.conn.common.Constant;
 import com.rongzm.conn.pojo.BusinessType;
 import com.rongzm.conn.pojo.Message;
+import com.rongzm.conn.pojo.MessageType;
 
 public class MessageDecoder extends ByteToMessageDecoder{
 
@@ -22,12 +23,12 @@ public class MessageDecoder extends ByteToMessageDecoder{
 		in.markReaderIndex();
 		
 		int businessType = in.readInt();
+		int messageType = in.readInt();
 		int length = in.readInt();
 		
 		byte[] bs = new byte[length];
 		in.readBytes(bs);
-		String body = new String(bs,Constant.UTF8);
-		out.add(new Message(BusinessType.get(businessType),length,body));
+		out.add(new Message(BusinessType.get(businessType),MessageType.get(messageType),bs));
 	}
 
 }

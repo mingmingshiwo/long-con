@@ -1,10 +1,14 @@
 package com.rongzm.conn.pojo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum BusinessType {
 	PING(1),
 	PONG(2),
 	REGIST(3),
 	LOGIN(4),
+	//message
 	SINGLE(5),
 	GROUP(6),
 	BROADCAST(7);
@@ -19,12 +23,15 @@ public enum BusinessType {
 	}
 	
 	public static BusinessType get(int value){
+		return map.get(value);
+	}
+	
+	static Map<Integer,BusinessType> map;
+	static{
+		map = new HashMap<Integer,BusinessType>();
 		BusinessType[] types = BusinessType.values();
 		for(BusinessType type:types){
-			if(type.value() == value){
-				return type;
-			}
+			map.put(type.value, type);
 		}
-		throw new RuntimeException("not support value: " + value);
 	}
 }

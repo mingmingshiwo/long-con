@@ -1,4 +1,4 @@
-package com.rongzm.conn;
+package com.rongzm.conn.impl;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelHandlerContext;
@@ -12,6 +12,7 @@ import io.netty.util.internal.chmv8.ConcurrentHashMapV8;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentMap;
 
+import com.rongzm.conn.Server;
 import com.rongzm.conn.handler.ServerInitializer;
 import com.rongzm.conn.pojo.BusinessType;
 import com.rongzm.conn.pojo.Message;

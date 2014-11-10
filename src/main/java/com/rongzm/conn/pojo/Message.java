@@ -1,24 +1,19 @@
 package com.rongzm.conn.pojo;
 
-import com.rongzm.conn.common.Constant;
 
 public class Message {
 	BusinessType businessType;
-	Integer length;
-	String body;
+	MessageType messageType;
+	byte[] body;
 
 	public Message() {
 	}
 
-	public Message(BusinessType businessType,String body){
+	public Message(BusinessType businessType, MessageType messageType,
+			byte[] body) {
+		super();
 		this.businessType = businessType;
-		this.length = body.getBytes(Constant.UTF8).length;
-		this.body = body;
-	}
-	
-	public Message(BusinessType businessType, Integer length, String body) {
-		this.businessType = businessType;
-		this.length = length;
+		this.messageType = messageType;
 		this.body = body;
 	}
 
@@ -30,20 +25,22 @@ public class Message {
 		this.businessType = businessType;
 	}
 
-	public Integer getLength() {
-		return length;
+	public MessageType getMessageType() {
+		return messageType;
 	}
 
-	public void setLength(Integer length) {
-		this.length = length;
+	public void setMessageType(MessageType messageType) {
+		this.messageType = messageType;
 	}
 
-	public String getBody() {
+	public byte[] getBody() {
 		return body;
 	}
 
-	public void setBody(String body) {
+	public void setBody(byte[] body) {
 		this.body = body;
 	}
 
+	
+	
 }

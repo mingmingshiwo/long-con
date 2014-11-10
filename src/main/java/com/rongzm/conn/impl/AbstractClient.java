@@ -1,4 +1,4 @@
-package com.rongzm.conn;
+package com.rongzm.conn.impl;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -10,6 +10,8 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 import java.net.InetSocketAddress;
 
+import com.rongzm.conn.Client;
+import com.rongzm.conn.CustomMessageHandler;
 import com.rongzm.conn.handler.ClientInitializer;
 import com.rongzm.conn.pojo.BusinessType;
 import com.rongzm.conn.pojo.Message;
@@ -22,6 +24,8 @@ public abstract class AbstractClient implements Client {
 
 	protected Channel mainLine;
 
+	protected CustomMessageHandler handler;
+	
 	public AbstractClient() {
 		bootstrap = new Bootstrap();
 		EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
@@ -48,12 +52,9 @@ public abstract class AbstractClient implements Client {
 		System.out.println("Connected!");
 		channel.closeFuture().syncUninterruptibly();
 	}
-
-	public Channel getMainLine() {
-		return mainLine;
-	}
-
-	public void setMainLine(Channel mainLine) {
-		this.mainLine = mainLine;
+	
+	@Override
+	public void setCustomMessageHanlder(CustomMessageHandler handler) {
+		this.handler = handler;
 	}
 }
