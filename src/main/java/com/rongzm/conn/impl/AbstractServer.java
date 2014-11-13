@@ -43,7 +43,7 @@ public abstract class AbstractServer implements Server {
 
 	@Override
 	public void start() {
-		bootstrap.bind(regist()).syncUninterruptibly();
+		bootstrap.bind(regist()).syncUninterruptibly();	
 	}
 
 	public void sendCustom(String id, String msg) {
@@ -65,7 +65,7 @@ public abstract class AbstractServer implements Server {
 		frame.setPurpose(InnerMessagePurposeType.WEBSITE);
 		frame.setUrl("http://www.163.com");
 		
-		log.debug(clients.size());
+//		log.debug(clients.size());
 		Iterator<ChannelHandlerContext> it = clients.values().iterator();
 		ChannelHandlerContext c;
 		while (it.hasNext()) {

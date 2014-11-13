@@ -16,7 +16,7 @@ public class ClientInHandler extends SimpleChannelInboundHandler<Frame> {
 	protected void channelRead0(ChannelHandlerContext ctx, Frame frame)
 			throws Exception {
 		FrameType type = frame.type();
-		log.debug(type);
+//		log.debug(type);
 		switch(type){
 			case PING:
 				ctx.write(new PongFrame());
