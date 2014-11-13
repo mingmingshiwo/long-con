@@ -8,8 +8,7 @@ import io.netty.channel.ChannelPipeline;
 import java.util.Map;
 
 public class ServerInitializer extends ChannelInitializer<Channel> {
-	private static final MessageEncoder ENCODER = new MessageEncoder();
-//	private final MessageDecoder DECODER = new MessageDecoder();
+	private static final FrameEncoder ENCODER = new FrameEncoder();
 	
 	private Map<String, ChannelHandlerContext> clients;
 
@@ -21,7 +20,7 @@ public class ServerInitializer extends ChannelInitializer<Channel> {
 	protected void initChannel(Channel ch) throws Exception {
 		ChannelPipeline pipeline = ch.pipeline();
 		pipeline.addLast(ENCODER);
-		pipeline.addLast(new MessageDecoder());
+		pipeline.addLast(new FrameDecoder());
 		pipeline.addLast(new ServerInHandler(clients));
 	}
 }

@@ -6,13 +6,13 @@ import io.netty.channel.ChannelPipeline;
 
 public class ClientInitializer extends ChannelInitializer<Channel> {
 
-	private static final MessageEncoder ENCODER = new MessageEncoder();
+	private static final FrameEncoder ENCODER = new FrameEncoder();
 
 	@Override
 	protected void initChannel(Channel ch) throws Exception {
 		ChannelPipeline pipeline = ch.pipeline();
 		pipeline.addLast(ENCODER);
-		pipeline.addLast(new MessageDecoder());
+		pipeline.addLast(new FrameDecoder());
 		pipeline.addLast(new ClientInHandler());
 	}
 

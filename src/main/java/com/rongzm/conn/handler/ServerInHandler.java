@@ -6,10 +6,10 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.Iterator;
 import java.util.Map;
 
-import com.rongzm.conn.pojo.BusinessType;
-import com.rongzm.conn.pojo.Message;
+import com.rongzm.conn.pojo.frame.Frame;
+import com.rongzm.conn.pojo.frame.LoginFrame;
 
-public class ServerInHandler extends SimpleChannelInboundHandler<Message> {
+public class ServerInHandler extends SimpleChannelInboundHandler<Frame> {
 
 	private Map<String, ChannelHandlerContext> clients;
 
@@ -18,10 +18,11 @@ public class ServerInHandler extends SimpleChannelInboundHandler<Message> {
 	}
 
 	@Override
-	protected void channelRead0(ChannelHandlerContext ctx, Message message)
+	protected void channelRead0(ChannelHandlerContext ctx, Frame frame)
 			throws Exception {
-		if(message.getBusinessType() == BusinessType.LOGIN){
-			String id = message.getBody();
+		if(frame instanceof LoginFrame){
+			LoginFrame loginFrame = (LoginFrame)frame;
+			String id = loginFrame.getId();
 			clients.put(id,ctx);
 		}
 	}
@@ -37,7 +38,6 @@ public class ServerInHandler extends SimpleChannelInboundHandler<Message> {
 				c = it.next();
 				if (c.equals(ctx)) {
 					it.remove();
-					System.out.println("[delete]");
 					delete = true;
 					break;
 				}
