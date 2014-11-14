@@ -12,7 +12,7 @@ public class PushDemo {
 		MailBoxConsumer mailBoxConsumer = new MailBoxConsumer();
 		
 		SingleProducer singleProducer = new SingleProducer();
-		for(int i=0;i<10;i++){
+		for(int i=0;i<10000;i++){
 			singleProducer.produce(new MqMessage(1l, 2l, (long)i));
 		}
 	}
