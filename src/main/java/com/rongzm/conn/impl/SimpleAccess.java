@@ -1,7 +1,7 @@
 package com.rongzm.conn.impl;
 
 
-public class SimpleServer extends AbstractServer{
+public class SimpleAccess extends AbstractAccess{
 
 	@Override
 	protected int regist() {

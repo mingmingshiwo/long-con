@@ -1,6 +1,6 @@
 package com.rongzm.conn;
 
 
-public interface Server {
+public interface Access {
 	public void start();
 }

@@ -14,13 +14,13 @@ import java.util.concurrent.ConcurrentMap;
 
 import org.apache.log4j.Logger;
 
-import com.rongzm.conn.Server;
+import com.rongzm.conn.Access;
 import com.rongzm.conn.handler.ServerInitializer;
 import com.rongzm.conn.pojo.frame.CustomMessageFrame;
 import com.rongzm.conn.pojo.frame.InnerMessageFrame;
 import com.rongzm.conn.pojo.frame.InnerMessagePurposeType;
 
-public abstract class AbstractServer implements Server {
+public abstract class AbstractAccess implements Access {
 
 	Logger log = Logger.getLogger(getClass());
 	
@@ -31,7 +31,7 @@ public abstract class AbstractServer implements Server {
 	// 启动注册 返回端口号
 	protected abstract int regist();
 
-	public AbstractServer() {
+	public AbstractAccess() {
 		bootstrap = new ServerBootstrap();
 		EventLoopGroup bossGroup = new NioEventLoopGroup(1);
 		EventLoopGroup workerGroup = new NioEventLoopGroup();

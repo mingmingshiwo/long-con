@@ -2,11 +2,11 @@ package com.rongzm.conn.demo;
 
 import java.util.concurrent.TimeUnit;
 
-import com.rongzm.conn.impl.SimpleServer;
+import com.rongzm.conn.impl.SimpleAccess;
 
-public class ServerDemoLoop {
+public class AccessDemoLoop {
 	public static void main(String[] args) throws Exception{
-		SimpleServer server = new SimpleServer();
+		SimpleAccess server = new SimpleAccess();
 		server.start();
 		
 		TimeUnit.SECONDS.sleep(10);
